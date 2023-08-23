@@ -40,7 +40,18 @@ namespace BlackJack
 
         public override string ToString()
         {
-            return $"{Rank} of {Suit}";
+            char suit = ' ';
+            switch (Suit)
+            {
+                case Suit.Hearts: suit = '♥';  break;
+
+                case Suit.Diamonds: suit = '◆'; break;
+
+                case Suit.Clubs: suit = '♣'; break;
+
+                case Suit.Spades: suit = '♠'; break;
+            }
+            return $"{Rank}{suit}";
         }
     }
 }

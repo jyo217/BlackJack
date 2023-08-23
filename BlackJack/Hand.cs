@@ -9,7 +9,7 @@ namespace BlackJack
     // 패를 표현하는 클래스
     public class Hand
     {
-        private List<Card> cards;
+        private List<Card> cards{ get; }
 
         public Hand()
         {
@@ -43,5 +43,7 @@ namespace BlackJack
 
             return total;
         }
+
+        public List<Card> GetCards() { return cards; }
     }
 }

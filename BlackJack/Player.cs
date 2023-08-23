@@ -10,7 +10,7 @@ namespace BlackJack
     public class Player
     {
         public Hand Hand { get; private set; }
-
+        private bool isStay = false;
         public Player()
         {
             Hand = new Hand();
@@ -21,6 +21,15 @@ namespace BlackJack
             Card drawnCard = deck.DrawCard();
             Hand.AddCard(drawnCard);
             return drawnCard;
+        }
+
+        public bool IsStay()
+        {
+            return isStay;
+        }
+        public void Stay()
+        {
+            isStay = true;
         }
     }
 }
