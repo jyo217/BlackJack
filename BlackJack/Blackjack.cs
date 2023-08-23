@@ -33,6 +33,8 @@ namespace BlackJack
                 Card card;
 
                 //카드 섞기(생성 과정에서 셔플까지 포함임)
+                player = new Player();
+                dealer = new Dealer();
                 deck = new Deck();
 
                 //서로 핸드에 카드를 2장씩 넣음
@@ -107,7 +109,7 @@ namespace BlackJack
             //stay 라면 더 뽑지 않음.
             else
             {
-                Console.WriteLine("딜러 - Stay\n");
+                Console.WriteLine("\n딜러 - Stay\n");
             }
 
             return flag;
@@ -124,7 +126,7 @@ namespace BlackJack
                 while (true)
                 {
                     string? msg = Console.ReadLine();
-
+                    Console.WriteLine("\n");
                     if (msg == "1") { break; }
                     else if (msg == "2") { player.Stay(); break; }
                     else { Console.WriteLine("\n잘못된 입력입니다. 다시 입력해주세요."); break; }
@@ -136,7 +138,7 @@ namespace BlackJack
                 card = player.DrawCardFromDeck(deck);
                 if (card == null)
                 {
-                    player.Stay(); Console.WriteLine("플레이어 - Stay\n");
+                    player.Stay(); Console.WriteLine("\n플레이어 - Stay\n");
                 }
                 else
                 {
@@ -188,7 +190,7 @@ namespace BlackJack
             {
                 Console.Write($"|{cards[i].ToString()}|  ");
             }
-            Console.WriteLine($"현재 점수 : {dealer.Hand.GetTotalValue()}\n\n");
+            Console.WriteLine($"현재 점수 : {dealer.Hand.GetTotalValue() - dealer.Hand.GetCards().First().GetValue()} + a\n\n");
 
             cards = player.Hand.GetCards();
             Console.Write("[플레이어]\n\n 손패 : ");
@@ -210,15 +212,15 @@ namespace BlackJack
         {
             if (flag == PLAYER_WIN) 
             {
-                Console.WriteLine("\n\n당신의 승리입니다!!");
+                Console.WriteLine("\n당신의 승리입니다!!");
             }
             else if (flag == DEALER_WIN)
             {
-                Console.WriteLine("\n\n딜러의 승리입니다.");
+                Console.WriteLine("\n딜러의 승리입니다.");
             }
             else
             {
-                Console.WriteLine("\n\n무승부!!");
+                Console.WriteLine("\n무승부!!");
             }
         }
 
